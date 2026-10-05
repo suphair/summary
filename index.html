@@ -11,6 +11,7 @@
   }
   body { margin: 0; background: var(--bg); color: var(--fg); font: 17px/1.5 Georgia, serif; }
   main { max-width: 720px; margin: 0 auto; padding: 24px 16px; }
+  h1 { font-size: 1.6em; margin: 0 0 .5em; }
   h2 { font-size: 1.2em; margin: 1.5em 0 .5em; }
   ul { list-style: none; padding: 0; margin: 0; }
   li { margin: .4em 0; }
@@ -101,6 +102,11 @@ function render(site, posts) {
       out.append(render(site, posts));
     }
   });
+  if (out.children.length) {
+    const h = document.createElement('h1');
+    h.textContent = now.toLocaleDateString('ru-RU', { day: 'numeric', month: 'long', year: 'numeric' });
+    out.prepend(h);
+  }
 })();
 </script>
 </body>
